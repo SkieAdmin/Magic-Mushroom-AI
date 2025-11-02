@@ -9,6 +9,8 @@ class Detection(BaseModel):
     confidence: float  # 0-1 scale
     bbox: List[float]  # [x1, y1, x2, y2]
     timestamp: int
+    freshness_score: Optional[float] = None  # 0-100 percentage
+    status: Optional[str] = None  # "good", "caution", "bad"
 
     class Config:
         populate_by_name = True
@@ -17,7 +19,9 @@ class Detection(BaseModel):
                 "class": "rotten_carrot",
                 "confidence": 0.87,
                 "bbox": [100, 150, 300, 400],
-                "timestamp": 1699999999999
+                "timestamp": 1699999999999,
+                "freshness_score": 35.5,
+                "status": "bad"
             }
         }
 

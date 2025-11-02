@@ -128,7 +128,9 @@ def process_image(image: np.ndarray) -> dict:
                     "class": classified_name,  # e.g., "rotten_carrot", "healthy_tomato"
                     "confidence": round(confidence, 4),  # 0-1 scale
                     "bbox": [round(coord, 2) for coord in bbox],
-                    "timestamp": int(time.time() * 1000)
+                    "timestamp": int(time.time() * 1000),
+                    "freshness_score": round(freshness_level, 1),  # 0-100 percentage
+                    "status": status  # "good", "caution", "bad"
                 }
 
                 detections.append(detection)
